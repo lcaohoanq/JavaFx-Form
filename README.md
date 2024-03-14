@@ -5,7 +5,7 @@
 - `.env` : fill the content below as your configuration
 ```shell
 DB_URL=jdbc:mysql://<your_port>/users_schema
-DB_USERNAME=<your_db_username>
+DB_USER=<your_db_username>
 DB_PASSWORD=<your_db_password>
 ```
 
