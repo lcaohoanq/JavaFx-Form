@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -10,9 +11,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lcaohoanq.formhandling.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lcaohoanq.formhandling.LoginController">
    <left>
       <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,8 +34,8 @@
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: #ECECE7;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="usernameTextField" layoutX="24.0" layoutY="76.0" prefHeight="26.0" prefWidth="249.0" promptText="Username" />
-            <PasswordField fx:id="enterPasswordField" layoutX="24.0" layoutY="119.0" prefHeight="26.0" prefWidth="249.0" promptText="Password" />
+            <TextField fx:id="usernameTextField" layoutX="24.0" layoutY="76.0" prefHeight="26.0" prefWidth="250.0" promptText="Username" />
+            <PasswordField fx:id="enterPasswordField" layoutX="25.0" layoutY="128.0" prefHeight="26.0" prefWidth="250.0" promptText="Password" />
             <Button fx:id="loginButton" layoutX="24.0" layoutY="192.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="32.0" prefWidth="249.0" style="-fx-background-color: #FF731D;" text="Login" textFill="WHITE">
                <effect>
                   <Glow />
@@ -44,37 +46,21 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="cancelButton" layoutX="24.0" layoutY="238.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="32.0" prefWidth="249.0" style="-fx-background-color: #5F9DF7;" text="Cancel" textFill="WHITE">
+            <Button fx:id="cancelButton" layoutX="24.0" layoutY="238.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #5F9DF7;" text="Cancel" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Label fx:id="loginMessageLabel" layoutX="69.0" layoutY="159.0" text="Invalid Login. Please try again." textFill="RED" />
             <Label layoutX="26.0" layoutY="286.0" text="----------------------- or -----------------------" />
-            <ImageView fx:id="ggImageView" fitHeight="30.0" fitWidth="30.0" layoutX="54.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@google.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="fbImageView" fitHeight="30.0" fitWidth="30.0" layoutX="131.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@facebook.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="204.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true" fx:id="xImageView">
-               <image>
-                  <Image url="@twitter.png" />
-               </image>
-            </ImageView>
             <Label layoutX="107.0" layoutY="14.0" text="Login">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="43.0" layoutY="362.0" text="Not a member?" />
-            <Button fx:id="signupHere" layoutX="160.0" layoutY="358.0" mnemonicParsing="false" onAction="#signupHereAction" text="Sign up here">
+            <Label layoutX="66.0" layoutY="362.0" text="Not a member?" />
+            <Button fx:id="signupHere" layoutX="156.0" layoutY="358.0" mnemonicParsing="false" onAction="#signupHereAction" text="Sign up here">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -82,6 +68,49 @@
                   <Glow />
                </effect>
             </Button>
+            <HBox alignment="CENTER" layoutX="24.0" layoutY="313.0" prefHeight="32.0" prefWidth="250.0">
+               <children>
+                  <ImageView fx:id="ggImageView" fitHeight="30.0" fitWidth="30.0" onMousePressed="#loginViaGoogleAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@google.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="fbImageView" fitHeight="30.0" fitWidth="30.0" onMousePressed="#loginViaFacebookAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@facebook.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMousePressed="#loginViaXAction" pickOnBounds="true" preserveRatio="true" fx:id="xImageView">
+                     <image>
+                        <Image url="@twitter.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </center>

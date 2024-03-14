@@ -13,8 +13,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-
+import org.w3c.dom.events.MouseEvent;
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,8 +28,6 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
     @FXML
     private Button cancelButton;
-    @FXML
-    private Label loginMessageLabel;
     @FXML
     private ImageView brandingImageView;
     @FXML
@@ -114,6 +116,27 @@ public class LoginController implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
+    }
+
+    @FXML
+    // Custom method for login via Google action
+    private void loginViaGoogleAction() {
+        // Add your code for Google login action here
+        System.out.println("Logging in via Google...");
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.google.com"));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void loginViaFacebookAction(){
+        AlertHandler.IS_NOT_SUPPORT();
+    }
+    @FXML
+    private void loginViaXAction(){
+        AlertHandler.IS_NOT_SUPPORT();
     }
 
 }

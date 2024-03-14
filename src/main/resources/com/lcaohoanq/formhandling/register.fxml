@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lcaohoanq.formhandling.RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lcaohoanq.formhandling.RegisterController">
     <left>
         <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
             <children>
@@ -53,7 +53,6 @@
                <effect>
                   <Glow />
                </effect></Button>
-                <Label fx:id="loginMessageLabel" layoutX="60.0" layoutY="225.0" text="Invalid Register. Please try again." textFill="RED" />
             <PasswordField fx:id="enterConfirmPasswordField" layoutX="22.0" layoutY="174.0" prefHeight="26.0" prefWidth="249.0" promptText="Confirm Password" />
             <Label layoutX="51.0" layoutY="367.0" text="Already a member?" />
             <Button fx:id="loginHere" layoutX="169.0" layoutY="363.0" mnemonicParsing="false" onAction="#loginHereAction" text="Sign in here" />

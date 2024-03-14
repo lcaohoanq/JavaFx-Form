@@ -5,6 +5,7 @@ module com.lcaohoanq.formhandling {
     requires java.sql;
     requires mysql.connector.j;
     requires dotenv.java;
+    requires java.desktop;
 
     opens com.lcaohoanq.formhandling to javafx.fxml;
     exports com.lcaohoanq.formhandling;
