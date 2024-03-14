@@ -44,13 +44,17 @@ public class LoginController implements Initializable {
         lockImageView.setImage(lockImage);
     }
     public void loginButtonAction(ActionEvent event) {
-        if((usernameTextField .getText().isBlank() == false )&& (enterPasswordField.getText().isBlank() == false)){
+        if((!usernameTextField.getText().isBlank()) && (!enterPasswordField.getText().isBlank())){
 //            loginMessageLabel.setText("You tried to login");
             validateLogin();
         }else{
-            loginMessageLabel.setText("Please enter username and password");
+            handleEmptyFields();
         }
     }
+    private void handleEmptyFields(){
+        AlertHandler.IS_EMPTY_FIELD("Empty Fields", "Please fill in all fields", null);
+    }
+
     public void validateLogin(){
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
@@ -63,9 +67,9 @@ public class LoginController implements Initializable {
 
             while(queryResult.next()){
                 if(queryResult.getInt(1) == 1){
-                    loginMessageLabel.setText("Congrats!");
+                    AlertHandler.IS_LOGIN_SUCCESS("Login Success", "Welcome " + usernameTextField.getText(), null);
                 }else{
-                    loginMessageLabel.setText("Invalid login. Please try again.");
+                    AlertHandler.IS_LOGIN_FAILED("Login Failed", "Wrong username or password", null);
                 }
             }
 
@@ -74,5 +78,8 @@ public class LoginController implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
+    }
+    private void handleSuccess(){
+        AlertHandler.IS_LOGIN_SUCCESS("Login Success", "Welcome " + usernameTextField.getText(), null);
     }
 }

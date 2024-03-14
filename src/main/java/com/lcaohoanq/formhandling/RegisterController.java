@@ -3,10 +3,7 @@ package com.lcaohoanq.formhandling;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -53,13 +50,16 @@ public class RegisterController implements Initializable {
         String confirmPassword = enterConfirmPasswordField.getText();
 
         if(isEmpty(username, password, confirmPassword)){
-            loginMessageLabel.setText("Please fill in all fields");
+            handleEmptyFields();
         }
 
     }
 
     private boolean isEmpty(String username, String password, String confirmPassword){
         return username.isBlank() || password.isBlank() || confirmPassword.isBlank();
+    }
+    private void handleEmptyFields(){
+        AlertHandler.IS_EMPTY_FIELD("Empty Fields", "Please fill in all fields", null);
     }
 
     @Override
