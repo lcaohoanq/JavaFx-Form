@@ -26,22 +26,39 @@ public class LoginController implements Initializable {
     @FXML
     private ImageView brandingImageView;
     @FXML
-    private ImageView lockImageView;
+    private Button signupHere;
     @FXML
     private TextField usernameTextField;
     @FXML
     private PasswordField enterPasswordField;
+    @FXML
+    private ImageView logoImageView;
+    @FXML
+    private ImageView ggImageView;
+    @FXML
+    private ImageView fbImageView;
+    @FXML
+    private ImageView xImageView;
     public void cancelButtonAction(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image brandingImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/lcaohoanq.branding.jpg").toExternalForm());
+        Image brandingImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/lcaohoanq.branding.png").toExternalForm());
         brandingImageView.setImage(brandingImage);
 
-        Image lockImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/lcaohoanq.lock.png").toExternalForm());
-        lockImageView.setImage(lockImage);
+        Image logoImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/fpt.png").toExternalForm());
+        logoImageView.setImage(logoImage);
+
+        Image ggImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/google.png").toExternalForm());
+        ggImageView.setImage(ggImage);
+
+        Image fbImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/facebook.png").toExternalForm());
+        fbImageView.setImage(fbImage);
+
+        Image xImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/twitter.png").toExternalForm());
+        xImageView.setImage(xImage);
     }
     public void loginButtonAction(ActionEvent event) {
         if((!usernameTextField.getText().isBlank()) && (!enterPasswordField.getText().isBlank())){
@@ -82,4 +99,8 @@ public class LoginController implements Initializable {
     private void handleSuccess(){
         AlertHandler.IS_LOGIN_SUCCESS("Login Success", "Welcome " + usernameTextField.getText(), null);
     }
+    public void signupHereAction(ActionEvent event) {
+        System.out.println("You clicked sign up here");
+    }
+
 }

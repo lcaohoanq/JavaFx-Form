@@ -26,9 +26,6 @@ public class RegisterController implements Initializable {
     private PasswordField enterPasswordField;
 
     @FXML
-    private ImageView lockImageView;
-
-    @FXML
     private Label loginMessageLabel;
 
     @FXML
@@ -64,11 +61,8 @@ public class RegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image brandingImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/lcaohoanq.branding.jpg").toExternalForm());
+        Image brandingImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/lcaohoanq.branding.png").toExternalForm());
         brandingImageView.setImage(brandingImage);
-
-        Image lockImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/lcaohoanq.lock.png").toExternalForm());
-        lockImageView.setImage(lockImage);
     }
 
 }
