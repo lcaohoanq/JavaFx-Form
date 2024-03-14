@@ -2,7 +2,10 @@ package com.lcaohoanq.formhandling;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,12 +35,15 @@ public class RegisterController implements Initializable {
     private Button signupButton;
 
     @FXML
+    private Button loginHere;
+
+    @FXML
     private TextField usernameTextField;
 
     @FXML
     void cancelButtonAction(ActionEvent event) {
-        Stage state = (Stage) cancelButton.getScene().getWindow();
-        state.close();
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -52,6 +58,7 @@ public class RegisterController implements Initializable {
 
     }
 
+
     private boolean isEmpty(String username, String password, String confirmPassword){
         return username.isBlank() || password.isBlank() || confirmPassword.isBlank();
     }
@@ -63,6 +70,20 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Image brandingImage = new Image(getClass().getResource("/com/lcaohoanq/formhandling/lcaohoanq.branding.png").toExternalForm());
         brandingImageView.setImage(brandingImage);
+    }
+    @FXML
+    void loginHereAction(ActionEvent event) {
+        try {
+            // Load the register.fxml file
+            Parent root = FXMLLoader.load(getClass().getResource("/com/lcaohoanq/formhandling/login.fxml"));
+
+            // Get the current scene and set the new root
+            Scene scene = loginHere.getScene();
+            scene.setRoot(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 
 }

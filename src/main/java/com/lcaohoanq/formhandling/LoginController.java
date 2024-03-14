@@ -1,7 +1,10 @@
 package com.lcaohoanq.formhandling;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -100,7 +103,17 @@ public class LoginController implements Initializable {
         AlertHandler.IS_LOGIN_SUCCESS("Login Success", "Welcome " + usernameTextField.getText(), null);
     }
     public void signupHereAction(ActionEvent event) {
-        System.out.println("You clicked sign up here");
+        try {
+            // Load the register.fxml file
+            Parent root = FXMLLoader.load(getClass().getResource("/com/lcaohoanq/formhandling/register.fxml"));
+
+            // Get the current scene and set the new root
+            Scene scene = signupHere.getScene();
+            scene.setRoot(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 
 }
