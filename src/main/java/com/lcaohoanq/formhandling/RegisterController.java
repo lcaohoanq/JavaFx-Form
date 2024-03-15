@@ -53,7 +53,7 @@ public class RegisterController implements Initializable {
         if(isEmpty(username, password, confirmPassword)){
             handleEmptyFields();
         }else if(!isMatching(password, confirmPassword)){
-            System.out.println("Password does not match");
+            AlertHandler.IS_NOT_MATCHING("Password Mismatch", "Password and Confirm Password do not match", null);
         }else{
             //insert to database
             validateRegister(username, username, username, password);

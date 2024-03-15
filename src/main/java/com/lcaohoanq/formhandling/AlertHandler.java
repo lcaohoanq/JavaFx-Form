@@ -24,6 +24,15 @@ public class AlertHandler {
         // Display the dialog
         alert.showAndWait();
     }
+    public static void IS_NOT_MATCHING(String title, String content, String moreContent){
+        setTypeAlert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(content);
+        alert.setContentText(moreContent);
+
+        // Display the dialog
+        alert.showAndWait();
+    }
     public static void IS_LOGIN_FAILED(String title, String content, String moreContent){
         setTypeAlert(Alert.AlertType.ERROR);
         alert.setTitle(title);
