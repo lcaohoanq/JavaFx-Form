@@ -9,21 +9,10 @@ import java.util.Properties;
 
 public class DatabaseConnection {
     public Connection databaseLink;
-    private Properties loadEnv() {
-        Dotenv dotenv = Dotenv.configure().load();
-        Properties properties = new Properties();
-        properties.setProperty("DB_URL", dotenv.get("DB_URL"));
-        properties.setProperty("DB_USER", dotenv.get("DB_USER"));
-        properties.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
-        return properties;
-    }
-
     public Connection getConnection() {
-        Properties properties = loadEnv();
-
-        String url = properties.getProperty("DB_URL");
-        String databaseUser = properties.getProperty("DB_USER");
-        String databasePassword = properties.getProperty("DB_PASSWORD");
+        String url = EnvUtils.get("DB_URL");
+        String databaseUser = EnvUtils.get("DB_USER");
+        String databasePassword = EnvUtils.get("DB_PASSWORD");
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
