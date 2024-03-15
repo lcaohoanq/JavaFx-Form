@@ -25,8 +25,6 @@ public class LoginController implements Initializable {
     @FXML
     private Button cancelButton;
     @FXML
-    private Label loginMessageLabel;
-    @FXML
     private ImageView brandingImageView;
     @FXML
     private Button signupHere;

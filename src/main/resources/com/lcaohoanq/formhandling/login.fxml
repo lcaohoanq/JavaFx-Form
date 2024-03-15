@@ -51,7 +51,6 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Label fx:id="loginMessageLabel" layoutX="69.0" layoutY="159.0" text="Invalid Login. Please try again." textFill="RED" />
             <Label layoutX="26.0" layoutY="286.0" text="----------------------- or -----------------------" />
             <ImageView fx:id="ggImageView" fitHeight="30.0" fitWidth="30.0" layoutX="54.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
                <image>
