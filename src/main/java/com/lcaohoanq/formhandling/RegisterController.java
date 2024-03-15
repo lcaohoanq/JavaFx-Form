@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
@@ -51,6 +52,11 @@ public class RegisterController implements Initializable {
 
         if(isEmpty(username, password, confirmPassword)){
             handleEmptyFields();
+        }else if(!isMatching(password, confirmPassword)){
+            System.out.println("Password does not match");
+        }else{
+            //insert to database
+            validateRegister(username, username, username, password);
         }
 
     }
@@ -59,8 +65,52 @@ public class RegisterController implements Initializable {
     private boolean isEmpty(String username, String password, String confirmPassword){
         return username.isBlank() || password.isBlank() || confirmPassword.isBlank();
     }
+    private boolean isMatching(String password, String confirmPassword){
+        return password.equals(confirmPassword);
+    }
     private void handleEmptyFields(){
         AlertHandler.IS_EMPTY_FIELD("Empty Fields", "Please fill in all fields", null);
+    }
+    public void validateRegister(String firstname, String lastname, String username, String password){
+        DatabaseConnection connectNow = null;
+        Connection connectDB = null;
+        PreparedStatement statement = null;
+        String insertUser = "INSERT INTO `user_account`" + "(`firstname`,`lastname`,`username`,`password`) " + "VALUES (?,?,?,?)";
+
+        try{
+            connectNow = new DatabaseConnection();
+            connectDB = connectNow.getConnection();
+            statement = connectDB.prepareStatement(insertUser);
+            statement.setString(1,firstname);
+            statement.setString(2,lastname);
+            statement.setString(3,username);
+            statement.setString(4,password);
+
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                AlertHandler.IS_LOGIN_SUCCESS("Register Success", "Welcome " + usernameTextField.getText(), null);
+            } else {
+                throw new SQLException("Insert failed for " + usernameTextField.getText());
+            }
+        }catch(SQLException e){
+            //MySQL Error for duplicate entry
+            if(e.getErrorCode() == 1062){
+                System.out.println("Username already exists");
+            }else{
+                System.out.println(e.getMessage());
+            }
+
+        }finally {
+            // Closing resources
+            try {
+                if (statement != null)
+                    statement.close();
+                if (connectDB != null)
+                    connectDB.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
